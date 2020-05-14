@@ -1,0 +1,66 @@
+{% extends "myblog/base.html" %}
+
+<!-- The detailed post view with comments template -->
+{% block body_block %}
+<!-- The template with major content in this project-->
+
+  <!-- The 'loder' is the color changing css class, displays post title as h1-->
+  <h1 class="posttitle loader">{{post.title}}</h1>
+  {% if post.published_date %}
+  <!--if the post is published -->
+    <div class="date postdate">
+      {{ post.published_date }}
+    </div>
+  {% else %}
+  <!-- if not published -->
+    <p>Created on: {{ post.create_date|date:"D M Y" }}</p>
+    <!-- show a button which takes to the publish url -->
+    <a class="btn btn-primary" href="{% url 'myblog:post_publish' pk=post.pk %}">Publish</a>
+  {% endif %}
+  <!-- the 'safe' prevents displaing html tags(from medium-js, like <b>Bold text<b>) -->
+  <!-- safe transforms that html looks to real looks -->
+  <!-- 'linebreaksbr',a line break in html converted to real world line break -->
+  <p class="postcontent">{{post.text|safe|linebreaksbr}}</p>
+
+  {% if user.is_authenticated %}
+  <!-- if user is authenticated, need two buttons 'edit' and 'remove' the post -->
+    <a class="btn btn-primary" href="{% url 'myblog:post_edit' pk=post.pk %}">
+      <i class="fas fa-edit"></i>
+    </a>
+    <a class="btn btn-primary" href="{% url 'myblog:post_remove' pk=post.pk %}">
+      <i class="fas fa-eraser"></i>
+    </a>
+  {% endif %}
+
+  <!-- horizontal break -->
+  <hr>
+  <!-- Add comment button -->
+  <a class="btn btn-primary btn-comment" href="{% url 'myblog:add_comment_to_post' pk=post.pk %}">Add Comment</a>
+
+  <div class="container">
+    {% for comment in post.comments.all %}
+      <br>
+        {% if user.is_authenticated or comment.approved_comment %}
+          {{comment.create_date}}
+          {% if not comment.approved_comment %}
+          <!-- need two buttons one to approve the comment & one to remove it -->
+            <a class="btn btn-primary" href="{% url 'myblog:comment_approve' pk=comment.pk %}">
+              <i class="fas fa-check"></i>
+            </a>
+            <a class="btn btn-primary" href="{% url 'myblog:comment_remove' pk=comment.pk %}">
+              <i class="fas fa-times"></i>
+            </a>
+          {% endif %}
+
+          <!-- The comment text filtered -->
+          <p>{{comment.text|safe|linebreaks}}</p>
+          <p>Posted By: {{comment.author}}</p>
+
+        {% endif %}
+        <!-- If comment section is empty -->
+        {% empty %}
+        <p>No Comments</p>
+    {% endfor %}
+
+  </div>
+{% endblock %}

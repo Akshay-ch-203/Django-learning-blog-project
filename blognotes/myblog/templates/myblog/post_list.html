@@ -1,0 +1,24 @@
+{% extends "myblog/base.html" %}
+
+<!-- List view that lists out the whole posts -->
+{% block body_block %}
+<div class="centerstage">
+  {% for post in post_list %}
+  <!-- The 'post_list' is returned by ListView CBVs, containes all post object models-->
+    <div class="post">
+      <!--Display all the posts in 'h1 tag' when clicked go to its detailed view with pk-->
+      <h1><a href="{% url 'myblog:post_detail' pk=post.pk %}">{{post.title}}</a></h1>
+      <div class="date">
+        <!-- below heading display published_date as 'p' with a date template filters -->
+      {% if post.published_date %}
+        <p>Published on: {{ post.published_date|date:"D M Y" }}</p>
+      {% else %}
+        <p>Created on: {{ post.create_date|date:"D M Y" }}</p>
+      {% endif %}
+      </div>
+      <!-- Displayes no. of comments below if clicked go back to post detail where the comments are displayed -->
+      <a href="{% url 'myblog:post_detail' pk=post.pk %}">Comments: {{post.approve_comments.count}}</a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

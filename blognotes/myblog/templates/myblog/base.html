@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Bootstrap local css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <!-- Font Awsome   -->
+    <script src="https://kit.fontawesome.com/57433fac3b.js" crossorigin="anonymous"></script>
+
+    <!-- Medium editor js file -->
+    <script src="{% static 'js/medium-editor.js' %}"></script>
+    <!-- medium style editor and its theme -->
+    <link rel="stylesheet" href="{% static 'css/medium-editor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themes/beagle.css' %}">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{% static 'css/myblog.css' %}">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Merriweather:wght@300&family=Righteous&display=swap" rel="stylesheet">
+    <!-- font-family: 'Righteous', cursive; font-family: font-family: 'Merriweather', serif; font-family: 'Josefin Sans', sans-serif; -->
+</head>
+<body class="body-back">
+    <!-- Setting the navbar and its style -->
+    <nav class="navbar navbar-expand-lg navbar-custom techfont">
+
+      <!-- Setting the brand(main letter on left) here ""-->
+      <a class="navbar-brand bigbrand" href="{% url 'myblog:post_list' %}">
+        <img id="logo_brand" src="{% static 'images/blog_logo.png' %}" class="d-inline-block align-top" alt="Na NAA, Error!">
+      Blognotes
+      </a>
+
+      <!-- Adding the Hamburger button -->
+      <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Dropdown and adding the Home link, ul > li item > content(anchor tag)-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto loader">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'myblog:about' %}">About<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Github<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Linkedin<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto navbar-right loader">
+          {% if user.is_authenticated %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'myblog:post_new' %}">New Post</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'myblog:post_draft_list' %}">Drafts</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" id="welcome">Welcome: {{user.username}}</a>
+            </li>
+
+          {% else %}
+            <!-- fontawsome icon use -->
+            <li class="nav-item active">
+              <a class="nav-link navbar-right loginbutton" href="{% url 'login' %}"><i class="far fa-address-card"></i></a>
+            </li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT BLOCK -->
+    <div class="content container">
+      <!-- row, collapsing things -->
+      <div class="row">
+        <div class="col-xs-6 col-lg-10">
+          <!-- col-md-8 col-sm-8 -->
+          <div class="blog-posts">
+              {% block body_block %}
+                <!-- Anything inside will be protected  -->
+              {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+<!--Compailed JS Bootstrap-->
+<!-- Necessory js and bootstrap files -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <!-- local bootstrap js files -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <!-- Medium editor js file -->
+    <script src="{% static 'js/medium-editor.js' %}"></script>
+    </html>
