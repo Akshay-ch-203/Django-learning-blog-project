@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a980b9c4-921a-4949-bd6c-e67dfccc73ae" name="Default Changelist" comment="project">
-      <change afterPath="$PROJECT_DIR$/.idea/Django-learning-blog-project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,10 +48,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="project" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="310" y="0" key="CommitChangelistDialog2" timestamp="1589472627361">
+    <state x="310" y="0" key="CommitChangelistDialog2" timestamp="1589472883252">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="310" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1589472627361" />
+    <state x="310" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1589472883252" />
     <state x="462" y="124" key="FileChooserDialogImpl" timestamp="1589472659104">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
