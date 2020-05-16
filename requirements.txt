@@ -9,8 +9,6 @@ Django==3.0.6
 dnspython==1.16.0
 Faker==4.0.3
 idna==2.9
-mysql-connector-python==8.0.19
-Pillow==7.1.2
 protobuf==3.6.1
 pycparser==2.20
 pypi==2.1
