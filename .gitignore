@@ -146,6 +146,4 @@ dmypy.json
 .prof
 
 envLocal
-blognotes/blognotes/__pycache__/*
-blognotes/myblog/__pycache__/*
-blognotes/blognotes/__pycache__/__init__.cpython-38.pyc
+/__pycache__/
