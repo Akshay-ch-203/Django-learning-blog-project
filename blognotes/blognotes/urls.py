@@ -21,7 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myblog.urls')),
     # The login and logout Views, which are inbuilt CBVs
-    path('accounts/login/', views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('accounts/login/',
+         views.LoginView.as_view(template_name='registration/login.html'),
+         name='login'),
     # Go to homepage after logging-out
-    path('account/logout/', views.LogoutView.as_view(), name='logout', kwargs={'next_page': "/"}),
+    path('account/logout/', views.LogoutView.as_view(),
+         name='logout', kwargs={'next_page': "/"}),
 ]
