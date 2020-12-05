@@ -26,5 +26,5 @@ urlpatterns = [
          name='login'),
     # Go to homepage after logging-out
     path('account/logout/', views.LogoutView.as_view(),
-         name='logout', kwargs={'next_page': "/"}),
+         name='logout', kwargs={'next_page': '/'}),
 ]

@@ -1,12 +1,12 @@
 /*****************  Basic Navbar and Text CSS *******************/
 
-#logo_brand{
+#logo_brand {
   width: 30px;
   height: 30px;
   margin-top: 11px;
 }
 
-#logo_brand2{
+#logo_brand2 {
   width: 28px;
   height: 28px;
   margin-top: 6px;
@@ -14,17 +14,19 @@
 
 .navbar-custom {
   /* background-color: #967cd9; */
-  background: url("/static/images/navbar_background.jpg") 0% 0 no-repeat fixed;
+  background: url('/static/images/navbar_background.jpg') 0% 0 no-repeat fixed;
 }
 
 /* Modify brand and text color */
 
-.navbar-custom, .navbar-brand, .navbar-text{
+.navbar-custom,
+.navbar-brand,
+.navbar-text {
   color: black;
   text-shadow: 2px 1px 20px #000000;
 }
 
-.nav-link{
+.nav-link {
   color: black;
 }
 /* Set the border color */
@@ -38,11 +40,11 @@
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(247, 187, 109, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.loginbutton{
+.loginbutton {
   padding-right: 200px;
 }
 
-#welcome{
+#welcome {
   font-size: 0.9em;
   margin-top: 3.3px;
   text-shadow: 2px 1px 3px #9a97a1;
@@ -50,21 +52,21 @@
 }
 
 /**************** about page ***************/
-.about{
+.about {
   text-align: center;
   margin-left: 10%;
   margin-top: 8%;
 }
 
-.about-body{
-  background-image: url("/static/images/about_background.jpg");
+.about-body {
+  background-image: url('/static/images/about_background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position:center;
+  background-position: center;
   background-attachment: fixed;
 }
 
-.aboutnav{
+.aboutnav {
   background-color: black;
   opacity: 0.25;
   /* filter:(opacity=40); */
@@ -73,70 +75,69 @@
   margin-bottom: 20px;
 }
 
-.thanks{
+.thanks {
   color: blue;
   font-size: 1.3em;
 }
 
 /***************** login page ************/
 
-.loginpage{
-  margin-left: 220px;
-  margin-top: 80px;
+.loginpage {
+  margin: 0 auto;
 }
 
-.loginpage-button{
+.loginpage-button {
   margin-left: 70px;
 }
 
 /******main body ******/
-.body-back{
-  background-image: url("/static/images/back.png");
+.body-back {
+  background-image: url('/static/images/back.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position:center;
+  background-position: center;
   background-attachment: fixed;
 }
 
-.blog-posts{
+.blog-posts {
   text-align: justify;
   margin-left: 25%;
   margin-top: 8%;
 }
 
-.techfont{
+.techfont {
   font-family: 'Righteous', cursive;
   font-size: 1.5em;
   margin-bottom: 10px;
 }
 
-.bigbrand{
+.bigbrand {
   font-size: 1.2em;
 }
 
-.centerstage{
+.centerstage {
   margin-left: auto;
   margin-right: auto;
 }
 
-.postdate{
+.postdate {
   text-align: center;
 }
-.posttitle{
+.posttitle {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 2.5em;
   text-align: center;
 }
 
-.postcontent{
-  font-family: 'Merriweather', serif;;
+.postcontent {
+  font-family: 'Merriweather', serif;
   font-size: 1.3em;
   text-align: center;
   margin-left: 10%;
   margin-right: 25%;
 }
 
-.btn-comment{
+.btn-comment {
   position: absolute;
   right: 0px;
 }
@@ -145,37 +146,37 @@
 /*                          Color Hue(codepen: creator:https://codepen.io/thapliyalshivam Css)            */
 
 .loader {
-  filter:hue-rotate(0deg);
-  color:linear-gradient(45deg,#0f8,#08f);
-  animation:hue 10000ms infinite linear;
+  filter: hue-rotate(0deg);
+  color: linear-gradient(45deg, #0f8, #08f);
+  animation: hue 10000ms infinite linear;
 }
 
 @keyframes spinify {
   0% {
-    transform: translate(0px,0px);
-
+    transform: translate(0px, 0px);
   }
   33% {
-    transform: translate(0px,24px);
-    border-radius:100%;
-    width:10px;
-    height:10px;
-
+    transform: translate(0px, 24px);
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
   }
-   66% {
-    transform:translate(0px,-16px);
+  66% {
+    transform: translate(0px, -16px);
   }
 
-   88% {
-    transform:translate(0px,4px);
-
+  88% {
+    transform: translate(0px, 4px);
   }
   100% {
-    transform:translate(0px,0px);
+    transform: translate(0px, 0px);
   }
 }
-@keyframes hue{
-  0%{filter: hue-rotate(0deg);}
-  100%{filter:hue-rotate(360deg);}
-
+@keyframes hue {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }

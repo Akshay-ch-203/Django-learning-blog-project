@@ -56,3 +56,61 @@ git rm  blognotes/myblog/__pycache__/
 ```
 
 It will remove the the files from repo and stage the deletions for the commit.
+
+## View the sqlite tables visually online
+
+---
+
+To view the model tables and foreign key relations visually one can use the free online tool,
+[sqliteonline.com](https://sqliteonline.com/).
+
+click file open db -> add the **db.sqlite3** file created after the django migration and click on view table.
+
+## The "related name" argument in the Django ORM foreign key relation
+
+---
+
+In the project the comments are related to the post through a foreign key, (simply the comment model stores the post_id)..\
+with,
+
+```python
+class Comment(models.Model):
+   post = models.ForeignKey(
+           'myblog.Post', related_name='comments', on_delete=models.CASCADE)
+```
+
+Then there is this method in the Post model,
+
+```python
+def approve_comments(self):
+   return self.comments.filter(approved_comment=True)
+```
+
+Look at this answer from [stackoverflow](https://stackoverflow.com/a/2642645/12167598)
+
+As the foreign key creates a reverse relation between 'myblog.Post' model to the Comment.post field, if one not specify a related name django will automatically create a new one with "comment_set",
+
+Then it can be accessed from parent model ie, Post.comment_set.all()
+
+By setting a related_name(plural, foreignkey returns multiple objects), here related_name='comments',
+so, Post.comments can be used for all the comments related to the post.
+
+## `save` method in model.
+
+* [The `save`](https://docs.djangoproject.com/en/3.1/topics/db/queries/#creating-objects) performs an INSERT SQL statement behind the scenes
+* The create() method can be used to create and save at the same time
+* Look for more info on [save method](https://docs.djangoproject.com/en/3.1/ref/models/instances/#saving-objects) on Django.
+
+## `get_absolute_url` method of Django models
+
+* The Django [`get_absolute_url`](https://docs.djangoproject.com/en/3.1/ref/models/instances/#get-absolute-url) tells how to calculate the canonical URL for an object. To callers, this method should appear to return a string that can be used to refer to the object over HTTP.
+
+## Setting the LOgin and Logout redirect URL's
+
+* The login and logout redirect urls can be defined on the settings.py, So the Django Auth(django.contrib.auth.views) will redirect to that pages after a login and logout.
+
+  ```python
+  # Login, logout redirect to home
+  LOGIN_REDIRECT_URL = '/'
+  LOGOUT_REDIRECT_URL = '/'
+  ```

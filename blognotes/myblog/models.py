@@ -5,8 +5,9 @@ from django.utils import timezone
 
 from django.urls import reverse
 
-
 # Model to store each blog post,
+
+
 class Post(models.Model):
     '''
     model class to store the Post
@@ -37,13 +38,12 @@ class Post(models.Model):
         # This 'Post' model and the following 'Comment' model related with a
         # ForeignKey, Each comment is attached to a 'Post', the name
         # 'comments' is the 'related_name' in the relation
-        print(self.comments)
         return self.comments.filter(approved_comment=True)
 
     def get_absolute_url(self):
         '''
         After Someone creates a post, the user need to be taken to the posts
-        detailed view page('post_detail'),
+        detailed view page('post_detail'-# name in urls.py),
         Detailed view always needs the primary key(pk) to display/identify the
         post 'self.pk' represents return to the detailed view of same post
         after creating
@@ -53,8 +53,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-# Model to store comments
 
+# Model to store comments
 
 class Comment(models.Model):
     '''
@@ -82,7 +82,7 @@ class Comment(models.Model):
         return to the list view(ie the homepage) after commenting on
         a post, the comments needs approval to display
         '''
-        return reverse("post_list")
+        return reverse("myblog:post_list")
 
     def __str__(self):
         return self.text
