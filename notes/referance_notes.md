@@ -101,11 +101,11 @@ so, Post.comments can be used for all the comments related to the post.
 * The create() method can be used to create and save at the same time
 * Look for more info on [save method](https://docs.djangoproject.com/en/3.1/ref/models/instances/#saving-objects) on Django.
 
-## `get_absolute_url` method of Django models
+### `get_absolute_url` method of Django models
 
 * The Django [`get_absolute_url`](https://docs.djangoproject.com/en/3.1/ref/models/instances/#get-absolute-url) tells how to calculate the canonical URL for an object. To callers, this method should appear to return a string that can be used to refer to the object over HTTP.
 
-## Setting the LOgin and Logout redirect URL's
+## Setting the Login and Logout redirect URL's
 
 * The login and logout redirect urls can be defined on the settings.py, So the Django Auth(django.contrib.auth.views) will redirect to that pages after a login and logout.
 
@@ -114,3 +114,69 @@ so, Post.comments can be used for all the comments related to the post.
   LOGIN_REDIRECT_URL = '/'
   LOGOUT_REDIRECT_URL = '/'
   ```
+
+## Hosting the site in [pythonanywhere.com](https://www.pythonanywhere.com/)
+
+* Create a beginner account (512mb disc, console)
+* Set up a virtual environment for the project
+
+  ```bash
+    > mkvirtualenv --python=python3.8 myproject
+    # myproject is the env name
+  ```
+
+* It creates a new python executable in `/home/Akshay203/.virtualenvs/myproject/bin/python3.8`.
+* Use the `pip list` to list installed packages.
+* Clone the project to the remote server from github, `git clone <path>`
+* Now the working path is `/home/Akshay203/<pr_name>/<git_mainfolder>/project`
+* Install the requirements in the venv, `pip install -r requirements.txt`
+* Check install using `which django-admin.py`, that shows the django-admin path.
+* Make migrations and set the superuser.(testuser & testproject#1)
+
+### Setting Up the Dashboard
+
+* Go to **web** --> Add new web apps
+* You can only set the given domain name as it is the basic version (Akshay203.pythonanywhere.com.), click next
+* Next option is to select the web framework, select the "manual configuration", then select the python version (here 3.8) and virtualenv, the setup will create a sample hello world WSGI(Web Server Gateway Interface) file, which the interface file for python web apps django comes with its full support.
+*  Now the app is set up, need to change the settings and paths for its running.
+* Go down and enter the path to `virtualenv` first, `/home/Akshay203/.virtualenvs/myproject`
+* Setting the `code` path: Get the code path by running `pwd` (here: `/home/Akshay203/Blognotes-Django-simple-blog-project/blognotes`)
+* WSGI file Edit\
+  Edit the WSGI file,
+  * Delete the hellow world files(usually from line no 13 to 47), then
+
+    ```python
+      import sys
+      import os
+
+      # assuming your Django settings file is at '/home/myusername/mysite/mysite/settings.py'
+      path = '/home/Akshay203/Blognotes-Django-simple-blog-project/blognotes'
+
+      os.chdir(path)
+      os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blognotes.settings")
+
+
+      # +++++++++++ DJANGO +++++++++++
+      # To use your own django app use code like this:
+
+      ## then:
+      import django
+      django.setup()
+
+      from django.core.wsgi import get_wsgi_application
+      application = get_wsgi_application()
+    ```
+
+* Admin - corrections for static files
+  url:-  /static/admin
+  directory_path:- /home/Akshay203/.virtualenvs/myproject/lib/python3.8/site-packages/django/contrib/admin/static/admin
+
+* User Static files
+  url:-  /static/
+  directory_path:- /home/Akshay203/Blognotes-Django-simple-blog-project/blognotes/myblog/static
+
+* Add the host url to the ALLOWED_HOSTS in settings.py,\
+  ALLOWED_HOSTS = ['Akshay203.pythonanywhere.com']
+
+* Change debug mode to 'False', not to display debug messages.
+* Now the site will be hosted.
